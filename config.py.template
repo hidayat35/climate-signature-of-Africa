@@ -1,0 +1,63 @@
+"""
+Configuration template.
+Copy this to config.py and edit the path constants for your local machine.
+None of the analytical scripts use this directly; instead they have their
+own DATA_ROOT / SHAPEFILE constants near the top of each file. This
+template is provided so you can hold all your paths in one place and
+update them by find-replace across the script set if needed.
+"""
+
+import os
+
+# ============================================================
+# DATA ROOTS  (edit these)
+# ============================================================
+
+# Where you downloaded the GEE exports
+DATA_ROOT = r'D:\Claude idea\PhD_Paper3_Data'
+
+# Subfolders under DATA_ROOT (typically don't need editing)
+TRANSITIONS_DIR = os.path.join(DATA_ROOT, 'PhD_Paper3_Data')   # transition_*.tif files
+STATES_DIR      = os.path.join(DATA_ROOT, 'PhD_Paper3_Data')   # state_*.tif files
+CLIMATE_DIR     = os.path.join(DATA_ROOT, 'climate_monthly')   # CHIRPS + TerraClimate monthly GeoTIFFs
+
+# Where Stage B writes SPEI/SPI NetCDFs and per-region statistics
+SPEI_DIR  = os.path.join(DATA_ROOT, 'step5_spei_output')
+STATS_DIR = os.path.join(SPEI_DIR, 'statistics_for_paper')
+DIAG_DIR  = os.path.join(SPEI_DIR, 'diagnostics')
+FIGS_DIR  = os.path.join(SPEI_DIR, 'figures_for_paper')
+
+# IPCC AR5 reference-region shapefile (download from
+# https://github.com/IPCC-WG1/Atlas), with column 'LAB' containing
+# the region codes MED, SAH, WAF, EAF, SAF
+SHAPEFILE = r'D:\Claude idea\ipc_africa_5_regions.shp'
+
+# Python interpreter
+PYTHON_EXE = r'C:\Users\hidayat\.conda\envs\zama1\python.exe'
+
+# ============================================================
+# ANALYTICAL CONSTANTS  (do not edit unless reproducing a sensitivity test)
+# ============================================================
+
+REGION_ORDER  = ['MED', 'SAH', 'WAF', 'EAF', 'SAF']
+REGION_NAMES  = {'MED': 'Mediterranean',  'SAH': 'Sahara-Sahel',
+                 'WAF': 'West Africa',    'EAF': 'East Africa',
+                 'SAF': 'Southern Africa'}
+REGION_COLORS = {'MED': '#d62728', 'SAH': '#ff7f0e',
+                 'WAF': '#2ca02c', 'EAF': '#1f77b4', 'SAF': '#9467bd'}
+
+# Calibration period for SPEI/SPI fitting
+CALIBRATION_START = 1985
+CALIBRATION_END   = 2000
+
+# Min transition pixels per cell for attribution to be considered (filters noise)
+MIN_TRANS_PIXELS = 30
+
+# Stricter stable-pixel: keep only pixels in from-state at BOTH interval endpoints
+USE_STRICTER_STABLE = True
+
+# Random seed for stable-pixel subsampling (reproducibility)
+RANDOM_SEED = 42
+
+# Stable-pixel subsample cap
+STABLE_PIXEL_CAP = 50000
