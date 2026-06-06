@@ -57,11 +57,11 @@ The paper attributes 30-m land-cover transitions (GLC_FCS30D, 1985–2022) to an
         └── Batch4_Part1_PaperSummaryCSV.py         ← master numerical-summary CSV (333 entries; provenance trail)
 ```
 
-## Derived data on Zenodo — [Zenodo DOI]
+## Derived data on Zenodo — [https://doi.org/10.5281/zenodo.20572259]
 
 The Zenodo archive is organised as `rasters/` and `tables/`.
 
-### `rasters/` — derived analysis rasters (single-band, ~5 km CHIRPS grid, continental Africa)
+### `rasters` — derived analysis rasters (single-band, ~5 km CHIRPS grid, continental Africa)
 
 | File | Produced by | Used in |
 |---|---|---|
@@ -77,7 +77,7 @@ The Zenodo archive is organised as `rasters/` and `tables/`.
 | `precip_trend_slope.tif` | `Step5_v7_ModuleA_canonical_rerun.py` | precipitation-trend reference |
 | `precip_trend_pvalue.tif` | `Step5_v7_ModuleA_canonical_rerun.py` | precipitation-trend reference |
 
-### `tables/` — published-table and figure-source CSVs
+### `tables` — published-table and figure-source CSVs
 
 | File | Content |
 |---|---|
