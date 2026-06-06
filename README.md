@@ -34,7 +34,6 @@ The paper attributes 30-m land-cover transitions (GLC_FCS30D, 1985–2022) to an
 ├── LICENSE                                ← MIT
 ├── requirements.txt                       ← Python dependencies (pinned)
 ├── config.py.template                     ← path-config template (copy, edit, save as config.py)
-├── pipeline_run_order.md                  ← step-by-step run instructions
 └── code/
     ├── gee/                               ← Google Earth Engine scripts (run in browser at code.earthengine.google.com)
     │   ├── Step2_v2_GEE_Monthly_Export.js          ← export CHIRPS + TerraClimate monthly to GeoTIFF
