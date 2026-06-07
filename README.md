@@ -160,7 +160,7 @@ The code is released under the **MIT License** (see `LICENSE`). The derived data
 
 ## Contact
 
-Hidayat Ullah — [ullahhidayat@qdu.edu.cn]
+Hidayat Ullah — ullahhidayat@qdu.edu.cn
 
 ## Acknowledgements
 
