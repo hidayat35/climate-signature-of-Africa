@@ -1,8 +1,8 @@
-# Suppressed recovery, not accelerated degradation, is the dominant climate signature of African land-cover change since 198
+# Across Africa, climate constrains vegetation recovery rather than accelerating degradation (1985–2022)
 
 This repository contains the **analysis code** for the paper:
 
-> **Suppressed recovery, not accelerated degradation, is the dominant climate signature of African land-cover change since 198**
+> **Across Africa, climate constrains vegetation recovery rather than accelerating degradation (1985–2022)**
 
 The **derived data** (analysis rasters and published-table / figure-source CSVs) are archived separately on Zenodo at **https://doi.org/10.5281/zenodo.20572259** because the rasters exceed GitHub's file-size limits.
 
@@ -150,9 +150,9 @@ Run the Python scripts in this order:
 
 If you use this code, data, or methodology in your own work, please cite both the paper and the archived data:
 
-> Ullah, H. et al. (2026). Recovery restriction, not degradation acceleration, is the dominant climate signature in African land-system change since 1985. *(Journal TBD).* DOI: TBD.
+> Ullah, H. et al. (2026). Across Africa, climate constrains vegetation recovery rather than accelerating degradation (1985–2022). *(Journal TBD).* DOI: TBD.
 >
-> Ullah, H. et al. (2026). Derived data for "Recovery restriction, not degradation acceleration…" [Data set]. Zenodo. **[Zenodo DOI]**
+> Ullah, H. et al. (2026). Derived data for "Across Africa, climate constrains vegetation recovery rather than accelerating degradation (1985–2022)" Data set. Zenodo. **https://doi.org/10.5281/zenodo.20572259**
 
 ## License
 
