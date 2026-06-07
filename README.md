@@ -22,8 +22,8 @@ The paper attributes 30-m land-cover transitions (GLC_FCS30D, 1985–2022) to an
 
 | Component | Location |
 |---|---|
-| Analysis code (this repo) | GitHub: **[https://github.com/hidayat35/dominant-climate-signature-of-African-land-cover-change]** |
-| Derived rasters + CSVs | Zenodo: **[https://doi.org/10.5281/zenodo.20572259]** |
+| Analysis code (this repo) | GitHub: **https://github.com/hidayat35/dominant-climate-signature-of-African-land-cover-change** |
+| Derived rasters + CSVs | Zenodo: **https://doi.org/10.5281/zenodo.20572259** |
 | Third-party input datasets | Original providers (see "Data sources") |
 
 ## Repository layout (code only)
