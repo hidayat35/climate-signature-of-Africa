@@ -1,22 +1,11 @@
-# Across Africa, climate constrains vegetation recovery rather than accelerating degradation (1985–2022)
+# Antecedent drought is more strongly associated with restricted vegetation recovery than with accelerated degradation across Africa (1985–2022)
 
 This repository contains the **analysis code** for the paper:
 
-> **Across Africa, climate constrains vegetation recovery rather than accelerating degradation (1985–2022)**
+> **Antecedent drought is more strongly associated with restricted vegetation recovery than with accelerated degradation across Africa, 1985–2022**
 
 The **derived data** (analysis rasters and published-table / figure-source CSVs) are archived separately on Zenodo at **https://doi.org/10.5281/zenodo.20572259** because the rasters exceed GitHub's file-size limits.
 
-The paper attributes 30-m land-cover transitions (GLC_FCS30D, 1985–2022) to antecedent drought conditions across the five IPCC AR5 Africa reference regions, using canonical SPEI/SPI series computed from CHIRPS precipitation and TerraClimate potential evapotranspiration. The central finding is that climate-driven African land-system change operates primarily through **recovery restriction** (climate gates which areas can recover) rather than **degradation acceleration** (climate forcing additional areas to degrade).
-
-## Headline findings
-
-| Finding | Value | Reference |
-|---|---|---|
-| Continental Recovery Suppression Index (Cohen's *d*) | −0.178 | §3.2 |
-| Continental Degradation Cohen's *d* | +0.020 (n.s.) | §3.2 |
-| Sahel Recovery Suppression Index | −0.484 (*p* = 0.048) | §3.2 |
-| Continental AED contribution to drought severity | 26.0% | §3.1 |
-| FDR-significant decadal shifts (post-2005, BH α = 0.05) | 5 of 15 (all negative) | §3.3, Table 3 |
 
 ## Where to find each component
 
@@ -148,11 +137,8 @@ Run the Python scripts in this order:
 
 ## Citation
 
-If you use this code, data, or methodology in your own work, please cite both the paper and the archived data:
+Citation will be available upon after publication
 
-> Ullah, H. et al. (2026). Across Africa, climate constrains vegetation recovery rather than accelerating degradation (1985–2022). *(Journal TBD).* DOI: TBD.
->
-> Ullah, H. et al. (2026). Derived data for "Across Africa, climate constrains vegetation recovery rather than accelerating degradation (1985–2022)" Data set. Zenodo. **https://doi.org/10.5281/zenodo.20572259**
 
 ## License
 
