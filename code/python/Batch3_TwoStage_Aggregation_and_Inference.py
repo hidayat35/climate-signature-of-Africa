@@ -1,7 +1,7 @@
 """
 ============================================================
 CONTINENTAL AGGREGATION AND INFERENCE
-  ->  Supplementary Tables S9, S12 and S13; Figure 6 source
+  ->  continental means, BCa intervals, equivalence and contrast tests
 ============================================================
 
 Computes the continental category means reported in the paper, together
@@ -23,7 +23,7 @@ with the largest pixel counts, which would otherwise reduce it to a
 Southern and East African average: Southern Africa contributes 25,972
 recovery pixels against the Mediterranean's 225.
 
-Regional indices (Eq. 7) retain transition-pixel weighting throughout,
+Regional indices (RSI and DRA) retain transition-pixel weighting throughout,
 because within a single region the disparity in cell size is far
 smaller.
 
@@ -53,9 +53,20 @@ INFERENCE
                         20,000 resamples on the region x pathway cell
                         means.
 
+SIX-INTERVAL BASELINE
+---------------------
+  The matched estimator covers the six intervals from 1990-1995 to
+  2015-2020. For the comparison with matching, the primary estimator
+  is also computed without the 2020-2022 interval ('point_lagged_6int').
+  It uses the same common unit set and the same code, and it is a
+  comparator only, not one of the five main estimators. Expected at SPEI-12: degradation +0.009 (-0.076, +0.090),
+  recovery -0.181 (-0.263, -0.105), agricultural -0.116 (-0.277, -0.001),
+  on 94, 70 and 60 region x pathway x interval combinations; matching
+  changes the recovery mean by 9% and the agricultural mean by 64%.
+
 OUTPUTS
 -------
-  final_twostage.json   all results, consumed by Generate_Figure6_ForestPlot.py
+  final_twostage.json   all results, consumed by Make_publication_figures.py (forest plot)
   printed tables        continental means, TOST, contrast, headline counts
 
 RUNTIME: about two minutes. Reads the per-cell effect-size tables only;
@@ -115,6 +126,16 @@ base = DATA['point_lagged'][0]
 b = base[(base.spei_timescale == 'spei_12') & base.cohens_d.notna()]
 COMMON = set(map(tuple, b[['region', 'transition']].drop_duplicates().values))
 print(f'\nCommon unit set: {len(COMMON)} region x pathway cells')
+
+# Primary estimator without the terminal interval: the comparator for matching.
+SIX_INTERVAL_DROP = '2020_2022'
+if 'interval' in base.columns:
+    DATA['point_lagged_6int'] = (base[base['interval'].astype(str) != SIX_INTERVAL_DROP].copy(),
+                                 'cohens_d', 'n_trans')
+    LABEL['point_lagged_6int'] = 'Point, lagged, six intervals'
+    ORDER.append('point_lagged_6int')
+else:
+    print('  NOTE: no interval column in the lagged table; six-interval baseline skipped')
 
 
 def units(df, dcol, ncol, ts, restrict=True):
@@ -254,5 +275,24 @@ print(f"{'ts':9s} {'window':18s} {'difference':>11s} {'Welch p':>9s} {'perm p':>
 for ts in TIMESCALES:
     for est, v in CONTRAST.get(ts, {}).items():
         print(f"{ts:9s} {LABEL[est]:18s} {v['diff']:+11.4f} {v['welch_p']:9.5f} {v['perm_p']:9.5f}")
+
+# ============================================================
+# MATCHING VERSUS THE SIX-INTERVAL BASELINE
+# ============================================================
+if 'point_lagged_6int' in DATA and 'cem_matched' in DATA:
+    ts = 'spei_12'
+    print('\n' + '=' * 104)
+    print('MATCHING VERSUS THE PRIMARY ESTIMATOR OVER THE SAME SIX INTERVALS (SPEI-12, lagged window)')
+    print('=' * 104)
+    ub = units(*DATA['point_lagged_6int'], ts)
+    um = units(*DATA['cem_matched'], ts)
+    for c in CATS:
+        mb = ub[ub.category == c].d.mean()
+        mm = um[um.category == c].d.mean()
+        nb = int(ub[ub.category == c].n_int.sum())
+        nm = int(um[um.category == c].n_int.sum())
+        att = 100.0 * (1.0 - mm / mb) if mb != 0 else float('nan')
+        print(f"  {c:13s} without matching {mb:+.6f} ({nb} combinations)   with matching {mm:+.6f} "
+              f"({nm} combinations)   change {att:5.1f}%")
 
 print(f"\nWritten: {os.path.join(OUT_DIR, 'final_twostage.json')}")
